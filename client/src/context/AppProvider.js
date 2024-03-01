@@ -12,6 +12,14 @@ function AppProvider ({ children }) {
         color: '',
     });
 
+    const [editProduct, setEditProduct] = useState({
+        name: '',
+        brand: '',
+        model: '',
+        price: '',
+        color: '',
+    });
+
     const [productsList, setProductsList] = useState(productApi);
 
 
@@ -19,8 +27,10 @@ function AppProvider ({ children }) {
         addProduct,
         setAddProduct,
         productsList,
-        setProductsList
-    }),[addProduct, productsList]);
+        setProductsList,
+        editProduct,
+        setEditProduct
+    }),[addProduct, productsList, editProduct]);
 
     return (
         <AppContext.Provider value={values}>
