@@ -28,6 +28,12 @@ function AppProvider ({ children }) {
     })
 
 
+    const [userSignup, setUserSignup] = useState({
+        email: '',
+        password: '',
+    })
+
+
     const values = useMemo(() => ({
         addProduct,
         setAddProduct,
@@ -36,8 +42,10 @@ function AppProvider ({ children }) {
         editProduct,
         setEditProduct,
         userLogin,
-        setUserLogin
-    }),[addProduct, productsList, editProduct, userLogin]);
+        setUserLogin,
+        userSignup,
+        setUserSignup
+    }),[addProduct, productsList, editProduct, userLogin, userSignup]);
 
     return (
         <AppContext.Provider value={values}>
