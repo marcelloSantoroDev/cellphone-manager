@@ -1,6 +1,7 @@
 import { useMemo } from "react";
 import AppContext from "./AppContext";
 import { useState } from 'react';
+import { productApi } from '../mocks/productApi.mock';
 
 function AppProvider ({ children }) {
     const [addProduct, setAddProduct] = useState({
@@ -11,11 +12,15 @@ function AppProvider ({ children }) {
         color: '',
     });
 
+    const [productsList, setProductsList] = useState(productApi);
+
 
     const values = useMemo(() => ({
         addProduct,
-        setAddProduct
-    }),[addProduct]);
+        setAddProduct,
+        productsList,
+        setProductsList
+    }),[addProduct, productsList]);
 
     return (
         <AppContext.Provider value={values}>

@@ -6,6 +6,11 @@
     text-align: center;
 }
 
+.remove-button {
+    margin-bottom: 1%;
+    width: 20%;
+}
+
 h1 {
     text-align: center;
 }
