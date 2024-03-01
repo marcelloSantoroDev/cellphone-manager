@@ -22,6 +22,11 @@ function AppProvider ({ children }) {
 
     const [productsList, setProductsList] = useState(productApi);
 
+    const [userLogin, setUserLogin] = useState({
+        email: '',
+        password: '',
+    })
+
 
     const values = useMemo(() => ({
         addProduct,
@@ -29,8 +34,10 @@ function AppProvider ({ children }) {
         productsList,
         setProductsList,
         editProduct,
-        setEditProduct
-    }),[addProduct, productsList, editProduct]);
+        setEditProduct,
+        userLogin,
+        setUserLogin
+    }),[addProduct, productsList, editProduct, userLogin]);
 
     return (
         <AppContext.Provider value={values}>
