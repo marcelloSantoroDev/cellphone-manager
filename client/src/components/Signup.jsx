@@ -13,8 +13,8 @@ function Signup() {
 
     const handleClick = async () => {
         const {name, email, password} = userSignup;
-        const post = await signupPost(name, email, password);
-        console.log(post);
+        const {message} = await signupPost(name, email, password);
+        console.log(message);
     }
     return (
         <div className='signup-container'>
