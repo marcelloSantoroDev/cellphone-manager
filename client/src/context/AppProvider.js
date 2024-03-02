@@ -29,6 +29,7 @@ function AppProvider ({ children }) {
 
 
     const [userSignup, setUserSignup] = useState({
+        name: '',
         email: '',
         password: '',
     })
