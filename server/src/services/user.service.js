@@ -1,6 +1,7 @@
 const bcrypt = require('bcrypt');
 const { users } = require('../models')
 const validateEmail = require('../utils/validateEmail');
+const existingUserCheck = require('../utils/existingUserCheck');
 
 const createUser = async ({name, email, password}) => {
     
@@ -22,6 +23,15 @@ const createUser = async ({name, email, password}) => {
 
     if (checkEmail.type) {
         return checkEmail;
+    }
+
+    const {type} = await existingUserCheck(email);
+
+    if(type === null) {
+        return {
+            type: 'CONFLICT',
+            message: 'User already exists'
+        };
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);

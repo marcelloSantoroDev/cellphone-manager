@@ -9,6 +9,7 @@ const createUser = async (req, res) => {
     if (type === 'INVALID_PASSWORD') return res.status(400).json({ message });
     if (type === 'INVALID_EMAIL') return res.status(400).json({ message });
     if (type === 'INVALID_NAME') return res.status(400).json({ message });
+    if (type === 'CONFLICT') return res.status(400).json({ message });
 
     const token = tokenGenerator(email);
 

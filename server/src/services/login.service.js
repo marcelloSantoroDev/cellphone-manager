@@ -1,5 +1,6 @@
 const existingUserCheck = require("../utils/existingUserCheck");
 const validateEmail = require("../utils/validateEmail");
+const validatePassword = require("../utils/validatePassword");
 
 const logUser = async ({email, password}) => {
 
@@ -20,10 +21,16 @@ const logUser = async ({email, password}) => {
         return checkInvalidEmail;
     }
 
-    const checkUser = await existingUserCheck(email, password);
+    const checkUser = await existingUserCheck(email);
 
     if (checkUser.type) {
         return checkUser;
+    }
+
+    const checkPassword = validatePassword(password, checkUser.message);
+
+    if (checkPassword.type) {
+        return checkPassword;
     }
 
     return { type: null, message: '' };
