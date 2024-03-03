@@ -3,9 +3,12 @@ import { Link } from 'react-router-dom';
 import './CSS/Login.css';
 import AppContext from '../context/AppContext';
 import loginPost from '../utils/loginPost';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
 function Login() {
   const {userLogin, setUserLogin} = useContext(AppContext);
+    const history = useHistory();
+
 
   const handleChange = (e) => {
     const {name, value} = e.target;
@@ -14,8 +17,9 @@ function Login() {
 
       const handleClick = async () => {
         const {email, password} = userLogin;
-        const post = await loginPost(email, password);
-        console.log(post);
+        const {token} = await loginPost(email, password);
+        localStorage.setItem('token', token);
+        history.push(`/products-list`) 
     }
 
 
