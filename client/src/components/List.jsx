@@ -1,3 +1,4 @@
+import { useHistory } from 'react-router-dom'
 import React, { useContext } from 'react'
 import ListCard from './reusables/ListCard'
 import AppContext from '../context/AppContext'
@@ -5,9 +6,16 @@ import { Link } from 'react-router-dom'
 
 function List() {
   const { productsList } = useContext(AppContext);
+  const history = useHistory();
+
+  const handleClick = () => {
+    localStorage.removeItem('token');
+    history.push('/');
+  }
   return (
     <div className='list-card-container' >
       <Link to='/add-product' className='link' >Add Product</Link>
+      <button className='link' onClick={handleClick}>Logout</button>
       <hr />
       <h1>Products</h1>
       {productsList.map((product) => (
