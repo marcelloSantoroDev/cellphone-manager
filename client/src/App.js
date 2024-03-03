@@ -15,8 +15,10 @@ function App() {
       <Route exact path="/" component={Home} />
       <Route path="/login" component={Login} />
       <Route path="/signup" component={Signup} />
-      <Route path="/add-product" component={Add} />
-      <Route path="/edit-product-:id" component={Edit} />
+      <PrivateRoute path="/add-product" component={Add} />
+      <Redirect from="/add-product" to="/" />
+      <PrivateRoute path="/edit-product-:id" component={Edit} />
+      <Redirect from="/edit-product-:id" to="/" />
       <PrivateRoute path="/products-list" component={List} />
       <Redirect from="/products-list" to="/" />
     </Switch>

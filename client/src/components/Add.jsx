@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import './CSS/Add.css';
 import AppContext from '../context/AppContext';
+import { Link } from 'react-router-dom';
 
 function Add() {
   const {addProduct, setAddProduct} = useContext(AppContext);
@@ -10,6 +11,9 @@ function Add() {
     setAddProduct({...addProduct, [name]: value});
   }
   return (
+    <>
+      <Link to='/products-list' className='link' >Return</Link>
+      <hr />
     <div className='add-product-container'>
       <form className='add-product-form' action="">
         <input
@@ -50,6 +54,7 @@ function Add() {
         <button>Submit</button>
       </form>
     </div>
+    </>
   )
 }
 

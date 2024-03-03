@@ -2,6 +2,7 @@ import { useParams } from 'react-router-dom';
 import React, { useContext } from 'react'
 import AppContext from '../context/AppContext'
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+import { Link } from 'react-router-dom'
 import './CSS/Edit.css'
 
 function Edit() {
@@ -22,6 +23,9 @@ function Edit() {
   }
 
   return (
+      <>
+      <Link to='/products-list' className='link' >Return</Link>
+      <hr />
       <div className='edit-product-container'>
       <form className='edit-product-form' action="">
         <input
@@ -62,6 +66,7 @@ function Edit() {
         <button onClick={handleEdit}>Edit</button>
       </form>
     </div>
+    </>
   )
 }
 
