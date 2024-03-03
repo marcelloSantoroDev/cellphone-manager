@@ -2,9 +2,11 @@ import React, { useContext } from 'react';
 import './CSS/Signup.css';
 import AppContext from '../context/AppContext';
 import signupPost from '../utils/signupPost';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
 function Signup() {
     const {userSignup, setUserSignup} = useContext(AppContext);
+    const history = useHistory();
 
     const handleChange = (e) => {
         const {name, value} = e.target;
@@ -13,8 +15,9 @@ function Signup() {
 
     const handleClick = async () => {
         const {name, email, password} = userSignup;
-        const {message} = await signupPost(name, email, password);
-        console.log(message);
+        const {token} = await signupPost(name, email, password);
+        localStorage.setItem('token', token);
+        history.push(`/products-list`)        
     }
     return (
         <div className='signup-container'>
