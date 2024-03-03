@@ -17,9 +17,13 @@ function Signup() {
 
     const handleClick = async () => {
         const {name, email, password} = userSignup;
-        const {token} = await signupPost(name, email, password);
-        localStorage.setItem('token', token);
-        history.push(`/products-list`)        
+        const {token, message} = await signupPost(name, email, password);
+            if(token){
+            localStorage.setItem('token', token);
+            history.push(`/products-list`) 
+        } else {
+            alert(message);
+        }
     }
     return (
         <>

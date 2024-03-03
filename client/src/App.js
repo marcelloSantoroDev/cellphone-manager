@@ -16,11 +16,11 @@ function App() {
       <Route path="/login" component={Login} />
       <Route path="/signup" component={Signup} />
       <PrivateRoute path="/add-product" component={Add} />
-      <Redirect from="/add-product" to="/" />
+      <Redirect from="/add-product" to="/login" />
       <PrivateRoute path="/edit-product-:id" component={Edit} />
-      <Redirect from="/edit-product-:id" to="/" />
+      <Redirect from="/edit-product-:id" to="/login" />
       <PrivateRoute path="/products-list" component={List} />
-      <Redirect from="/products-list" to="/" />
+      <Redirect from="/products-list" to="/login" />
     </Switch>
   );
 }
