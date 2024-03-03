@@ -3,6 +3,8 @@ import './CSS/Signup.css';
 import AppContext from '../context/AppContext';
 import signupPost from '../utils/signupPost';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+import { Link } from 'react-router-dom';
+
 
 function Signup() {
     const {userSignup, setUserSignup} = useContext(AppContext);
@@ -20,6 +22,7 @@ function Signup() {
         history.push(`/products-list`)        
     }
     return (
+        <>
         <div className='signup-container'>
             <div className='form-container' action="">
                 <input
@@ -49,6 +52,9 @@ function Signup() {
                 <button onClick={handleClick}>Signup</button>
             </div>
         </div>
+        <Link className="link" to="/">Home</Link>
+
+        </>
     )
 }
 

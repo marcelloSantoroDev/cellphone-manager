@@ -20,6 +20,7 @@ function Login() {
 
 
   return (
+    <>
     <div className='login-container'>
         <div className='form-container' action="">
             <input
@@ -42,6 +43,8 @@ function Login() {
             <p>Don't have an account?  <Link className="sign-up-link" to="/signup">Signup</Link></p>
         </div>
     </div>
+        <Link className="link" to="/">Home</Link>
+    </>
   )
 }
 
