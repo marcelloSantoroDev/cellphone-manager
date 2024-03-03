@@ -1,6 +1,4 @@
 const { users } = require('../models');
-const validatePassword = require('../utils/validatePassword');
-
 
 const existingUserCheck = async (email) => {
     const user = await users.findOne({ where: { email } });
