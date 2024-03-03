@@ -18,7 +18,7 @@ function App() {
       <Route path="/add-product" component={Add} />
       <Route path="/edit-product-:id" component={Edit} />
       <PrivateRoute path="/products-list" component={List} />
-      <Redirect from="/products-list" to="login" />
+      <Redirect from="/products-list" to="/" />
     </Switch>
   );
 }

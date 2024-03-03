@@ -1,8 +1,20 @@
-import axios from "axios"
+import axios from "axios";
 
 const authPost = async (token) => {
-    const { data } = await axios.post("http://localhost:3001/auth", { token });
-    return data;
-}
+    try {
+        const { data } = await axios.post(
+            "http://localhost:3001/auth",
+            {},
+            {
+                headers: {
+                    Authorization: token
+                },
+            }
+        );
+        return data;
+    } catch (error) {
+        throw error;
+    }
+};
 
 export default authPost;
