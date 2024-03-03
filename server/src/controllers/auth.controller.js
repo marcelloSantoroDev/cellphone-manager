@@ -6,7 +6,7 @@ const authUser = async (req, res) => {
 
     if(!type) return res.status(200).json({ type: 'VALID_TOKEN', message: 'Valid Token' });
 
-    return res.status(400).json({ type: 'INVALID_TOKEN', message: 'Invalid Token' });
+    return res.status(200).json({ type: 'INVALID_TOKEN', message: 'Invalid Token' });
 }
 
 module.exports = { authUser };
