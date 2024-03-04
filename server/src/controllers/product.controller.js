@@ -8,7 +8,13 @@ const createProduct = async (req, res) => {
     if (type === 'INVALID_PRICE') return res.status(200).json({ message });
     if (type === 'INVALID_COLOR') return res.status(200).json({ message });
 
-    res.status(201).json('created');
+    res.status(201).json({ message: 'created' });
 }
 
-module.exports = { createProduct };
+const getAll = async (_req, res) => {
+    const { message } = await productService.getAll();
+
+    res.status(200).json(message);
+}
+
+module.exports = { createProduct, getAll };

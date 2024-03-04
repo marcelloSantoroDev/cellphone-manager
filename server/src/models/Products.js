@@ -14,13 +14,12 @@ module.exports = (sequelize, DataTypes) => {
         timestamps: false
     });
 
-    // products.associate = function (models) {
-    //     products.hasOne(models.details, {
-    //         foreignKey: 'productId',
-    //         as: 'details'
-    //     });
-    // }
-
+    products.associate = function (models) {
+        products.hasMany(models.details, {
+            foreignKey: 'productId',
+            as: 'data'
+        });
+    }
 
     return products;
 }

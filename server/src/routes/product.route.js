@@ -5,5 +5,6 @@ const router = express.Router();
 const { productController } = require('../controllers');
 
 router.post('/', productController.createProduct);
+router.get('/', productController.getAll);
 
 module.exports = router;

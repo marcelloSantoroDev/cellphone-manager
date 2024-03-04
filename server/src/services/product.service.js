@@ -24,4 +24,21 @@ const createProduct = async (name, brand, model, price, color) => {
     return { type: null, message: '' };
 }
 
-module.exports = { createProduct };
+const getAll = async () => {
+    const data = await products.findAll({
+        include: [{
+            model: details,
+            as: 'data',
+            attributes: {
+                exclude: ['id', 'productId'], // Exclua as chaves que você não deseja retornar
+            },
+        }],
+        attributes: {
+            exclude: ['id'], // Exclua a chave 'id' de products
+        },
+    });
+
+    return { type: null, message: data };
+}
+
+module.exports = { createProduct, getAll };
