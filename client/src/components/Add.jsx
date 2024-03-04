@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import './CSS/Add.css';
 import AppContext from '../context/AppContext';
 import { Link } from 'react-router-dom';
+import productPost from '../utils/productPost';
 
 function Add() {
   const {addProduct, setAddProduct} = useContext(AppContext);
@@ -10,6 +11,14 @@ function Add() {
     const {name, value} = e.target;
     setAddProduct({...addProduct, [name]: value});
   }
+
+  const handleClick = async (e) => {
+    e.preventDefault()
+    const { name, brand, model, price, color } = addProduct;
+    const data = await productPost(name, brand, model, price, color);
+    alert(data);
+  }
+
   return (
     <>
       <Link to='/products-list' className='link' >Return</Link>
@@ -51,7 +60,7 @@ function Add() {
         placeholder='Color'
         onChange={handleChange}
         />
-        <button>Submit</button>
+        <button onClick={handleClick} >Submit</button>
       </form>
     </div>
     </>
