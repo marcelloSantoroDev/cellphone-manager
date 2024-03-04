@@ -15,8 +15,9 @@ function Add() {
   const handleClick = async (e) => {
     e.preventDefault()
     const { name, brand, model, price, color } = addProduct;
-    const data = await productPost(name, brand, model, price, color);
-    alert(data);
+    const { message } = await productPost(name, brand, model, price, color);
+    alert(message);
+    setAddProduct({name: '', brand: '', model: '', price: '', color: ''});
   }
 
   return (
