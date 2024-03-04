@@ -18,7 +18,6 @@ const createProduct = async (name, brand, model, price, color) => {
             color,
             productId: message
         });
-
         return { type: null, message: '' };
     }
 
@@ -48,11 +47,11 @@ const getAll = async () => {
             model: details,
             as: 'data',
             attributes: {
-                exclude: ['id', 'productId'], // Exclua as chaves que você não deseja retornar
+                exclude: ['id', 'productId'],
             },
         }],
         attributes: {
-            exclude: ['id'], // Exclua a chave 'id' de products
+            exclude: ['id'],
         },
     });
 
