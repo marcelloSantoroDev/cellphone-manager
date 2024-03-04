@@ -7,6 +7,7 @@ const createProduct = async (req, res) => {
     if (type === 'INVALID_FIELDS') return res.status(200).json({ message });
     if (type === 'INVALID_PRICE') return res.status(200).json({ message });
     if (type === 'INVALID_COLOR') return res.status(200).json({ message });
+    if (type === 'INVALID_PRODUCT') return res.status(200).json({ message });
 
     res.status(201).json({ message: 'created' });
 }
