@@ -49,10 +49,7 @@ const getAll = async () => {
             attributes: {
                 exclude: ['id', 'productId'],
             },
-        }],
-        attributes: {
-            exclude: ['id'],
-        },
+        }]
     });
 
     return { type: null, message: data };
@@ -69,7 +66,7 @@ const updateProduct = async (id, name, brand, model, price, color) => {
     await products.update({ name, brand, model }, { where: { id } });
     await details.update({ price, color }, { where: { id } });
     
-    return { type: null, message: '' };
+    return { type: null, message: 'Updated' };
 }
 
 module.exports = { createProduct, getAll, updateProduct };

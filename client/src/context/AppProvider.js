@@ -1,7 +1,8 @@
-import { useMemo } from "react";
+import { useEffect, useMemo } from "react";
 import AppContext from "./AppContext";
 import { useState } from 'react';
-import { productApi } from '../mocks/productApi.mock';
+import productsGet from "../utils/productsGet";
+// import { productApi } from '../mocks/productApi.mock';
 
 function AppProvider ({ children }) {
     const [addProduct, setAddProduct] = useState({
@@ -20,7 +21,7 @@ function AppProvider ({ children }) {
         color: '',
     });
 
-    const [productsList, setProductsList] = useState(productApi);
+    const [productsList, setProductsList] = useState([]);
 
     const [userLogin, setUserLogin] = useState({
         email: '',
@@ -33,6 +34,15 @@ function AppProvider ({ children }) {
         email: '',
         password: '',
     })
+
+    useEffect(() => {
+        const apiFetch = async () => {
+            const response = await productsGet();
+            setProductsList(response);
+            console.log(response);
+        }
+        apiFetch();
+    },[])
 
 
     const values = useMemo(() => ({

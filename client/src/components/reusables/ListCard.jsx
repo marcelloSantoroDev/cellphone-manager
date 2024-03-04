@@ -4,7 +4,7 @@ import AppContext from '../../context/AppContext';
 import { useHistory } from 'react-router-dom'; 
 
 function ListCard(props) {
-    const {name, brand, model, price, color, id} = props.product;
+    const {name, brand, model, data, id} = props.product;
     const {productsList, setProductsList} = useContext(AppContext);
     const history = useHistory();
 
@@ -22,8 +22,12 @@ function ListCard(props) {
     <p><strong>Name:</strong> {name}</p>
     <p><strong>Brand:</strong> {brand}</p>
     <p><strong>Model:</strong> {model}</p>
-    <p><strong>Price:</strong> {price}</p>
-    <p><strong>Color:</strong> {color}</p>
+    {data.map(({price, color}, index)=> (
+      <div className='price-color-container' key={index}>
+      <p><strong>Color:</strong> {color}</p>
+      <p><strong>Price:</strong> {price}</p>
+      </div>
+    ))}
     <div className='buttons-container'>
     <button onClick={handleRemove} className='remove-button'>Remove</button>
     <button className='edit-button' onClick={handlePush}>Edit</button>

@@ -24,3 +24,10 @@
 h1 {
     text-align: center;
 }
+
+.price-color-container {
+    border: solid 1px red;
+    width: 50%;
+    margin: auto;
+    margin-bottom: 1%;
+}

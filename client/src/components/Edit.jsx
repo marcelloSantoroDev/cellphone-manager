@@ -4,21 +4,23 @@ import AppContext from '../context/AppContext'
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { Link } from 'react-router-dom'
 import './CSS/Edit.css'
+import productsPut from '../utils/productsPut';
 
 function Edit() {
-  const {productsList, setProductsList, editProduct, setEditProduct } = useContext(AppContext);
+  const { editProduct, setEditProduct } = useContext(AppContext);
   const {id} = useParams();
   const history = useHistory();
-  // const product = productsList.find(product => product.id === +id);
 
     const handleChange = (e) => {
     const {name, value} = e.target;
     setEditProduct({...editProduct, [name]: value});
   }
 
-  const handleEdit = () => {
-    const listWithoutTarget = productsList.filter(product => product.id !== +id);
-    setProductsList([...listWithoutTarget, editProduct]);
+  const handleEdit = async (e) => {
+    e.preventDefault();
+    const {name, brand, model, price, color} = editProduct;
+    const { message } = await productsPut(id, name, brand, model, price, color);
+    alert(message);
     history.push('/products-list');
   }
 
