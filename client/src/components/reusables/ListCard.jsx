@@ -1,16 +1,16 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import './CSS/ListCard.css';
-import AppContext from '../../context/AppContext';
+// import AppContext from '../../context/AppContext';
 import { useHistory } from 'react-router-dom'; 
+import productDelete from '../../utils/productDelete';
 
 function ListCard(props) {
     const {name, brand, model, data, id} = props.product;
-    const {productsList, setProductsList} = useContext(AppContext);
+    // const {productsList, setProductsList} = useContext(AppContext);
     const history = useHistory();
 
-    const handleRemove = () => {
-      const newList = productsList.filter(product => product.name !== name);
-      setProductsList(newList);
+    const handleRemove = async () => {
+      await productDelete(id);
     } 
 
     const handlePush = () => {

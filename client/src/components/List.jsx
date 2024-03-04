@@ -29,7 +29,7 @@ function List() {
       <hr />
       <h1>Products</h1>
       {productsList.map((product) => (
-        <ListCard key={product.id} product={product} />
+        <ListCard key={product.id} product={product} productId={product.id} />
       ))}
     </div>
   )

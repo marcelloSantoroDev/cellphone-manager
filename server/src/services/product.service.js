@@ -69,4 +69,11 @@ const updateProduct = async (id, name, brand, model, price, color) => {
     return { type: null, message: 'Updated' };
 }
 
-module.exports = { createProduct, getAll, updateProduct };
+const deleteProduct = async (id) => {
+    await products.destroy({ where: { id } });
+    await details.destroy({ where: { id } });
+
+    return { type: null, message: 'Deleted' };
+}
+
+module.exports = { createProduct, getAll, updateProduct, deleteProduct };
