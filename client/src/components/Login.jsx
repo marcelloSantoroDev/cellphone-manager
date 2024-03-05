@@ -17,12 +17,13 @@ function Login() {
 
       const handleClick = async () => {
         const {email, password} = userLogin;
-        const {token, message} = await loginPost(email, password);
-        if(token){
-          localStorage.setItem('token', token);
-          history.push(`/products-list`) 
-        } else {
-          alert(message);
+        const data = await loginPost(email, password);
+        if (typeof data === 'string') {
+            alert(data);
+            setUserLogin({email: '', password: ''});
+        }else{
+            localStorage.setItem('token', data.message);
+            history.push(`/products-list`) 
         }
     }
 

@@ -1,9 +1,12 @@
 import axios from "axios";
 
 const loginPost = async (email, password) => {
+    try {
         const { data } = await axios.post('http://localhost:3001/login', { email, password });
-        console.log(data);
         return data;
+    } catch (error) {
+        return error.response.data;
+    }
         
     }
 

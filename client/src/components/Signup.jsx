@@ -20,6 +20,7 @@ function Signup() {
         const data = await signupPost(name, email, password);
         if (typeof data === 'string') {
             alert(data);
+            setUserSignup({name: '', email: '', password: ''});
         }else{
             localStorage.setItem('token', data.message);
             history.push(`/products-list`) 
