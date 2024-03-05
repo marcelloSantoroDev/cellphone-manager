@@ -1,8 +1,13 @@
 import axios from "axios";
 
 const productPost = async (name, brand, model, price, color) => {
-    const { data } = await axios.post("http://localhost:3001/products", { name, brand, model, price, color });
-    return data;
+    try {
+        const { data } = await axios.post("http://localhost:3001/products", { name, brand, model, price, color });
+        console.log("data: " + data);
+        return data;
+    } catch (error) {
+        return error.response.data
+    }
 }
 
 export default productPost;

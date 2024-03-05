@@ -7,7 +7,7 @@ const createProduct = async (name, brand, model, price, color) => {
     const checkFieldsEmpty = checkFields.some(field => field === '');
 
     if (checkFieldsEmpty) return { type: 'INVALID_FIELDS', message: 'All fields must be filled' };
-    if (price < 0) return { type: 'INVALID_PRICE', message: 'Price must be greater than zero' };
+    if (isNaN(parseFloat(price))) return { type: 'INVALID_PRICE', message: 'Price must be a number' };
     if (color.length < 3) return { type: 'INVALID_COLOR', message: 'Color must be at least 3 characters long' };
 
     const { type, message } = await existingProductCheck(name, model, color);
