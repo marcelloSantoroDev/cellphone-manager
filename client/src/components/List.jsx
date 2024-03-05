@@ -20,7 +20,7 @@ function List() {
           setProductsList(allProducts);
     }
     updateApi();
-  })
+  },[setProductsList])
 
   return (
     <div className='list-card-container' >

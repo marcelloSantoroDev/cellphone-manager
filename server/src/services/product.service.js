@@ -55,16 +55,13 @@ const getAll = async () => {
     return { type: null, message: data };
 }
 
-const updateProduct = async (id, name, brand, model, price, color) => {
-    const checkFields = [name, brand, model, price, color];
+const updateProduct = async (id, name, brand, model) => {
+    const checkFields = [name, brand, model];
     const checkFieldsEmpty = checkFields.some(field => field === '');
 
     if (checkFieldsEmpty) return { type: 'INVALID_FIELDS', message: 'All fields must be filled' };
-    if (price < 0) return { type: 'INVALID_PRICE', message: 'Price must be greater than zero' };
-    if (color.length < 3) return { type: 'INVALID_COLOR', message: 'Color must be at least 3 characters long' };
 
     await products.update({ name, brand, model }, { where: { id } });
-    await details.update({ price, color }, { where: { id } });
     
     return { type: null, message: 'Updated' };
 }

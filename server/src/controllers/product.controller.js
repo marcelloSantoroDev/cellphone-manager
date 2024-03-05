@@ -20,15 +20,15 @@ const getAll = async (_req, res) => {
 
 const updateProduct = async (req, res) => {
     const { id } = req.params;
-    const { name, brand, model, price, color } = req.body;
-    const { type, message } = await productService.updateProduct(id, name, brand, model, price, color);
+    const { name, brand, model } = req.body;
+    const { type, message } = await productService.updateProduct(id, name, brand, model);
 
-    if (type === 'INVALID_FIELDS') return res.status(200).json({ message });
-    if (type === 'INVALID_PRICE') return res.status(200).json({ message });
-    if (type === 'INVALID_COLOR') return res.status(200).json({ message });
-    if (type === 'INVALID_PRODUCT') return res.status(200).json({ message });
+    if (type === 'INVALID_FIELDS') return res.status(400).json(message);
+    if (type === 'INVALID_PRICE') return res.status(400).json(message);
+    if (type === 'INVALID_COLOR') return res.status(400).json(message);
+    if (type === 'INVALID_PRODUCT') return res.status(400).json(message);
 
-    res.status(200).json({ message });
+    res.status(200).json({ type: '', message });
 }
 
 const deleteProduct = async (req, res) => {

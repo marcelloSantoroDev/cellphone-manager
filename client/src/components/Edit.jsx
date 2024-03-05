@@ -18,9 +18,13 @@ function Edit() {
 
   const handleEdit = async (e) => {
     e.preventDefault();
-    const {name, brand, model, price, color} = editProduct;
-    const { message } = await productsPut(id, name, brand, model, price, color);
-    alert(message);
+    const {name, brand, model} = editProduct;
+    const data = await productsPut(id, name, brand, model);
+    if(typeof data === 'string') {
+      alert(data);
+    }
+    alert(data.message)
+    setEditProduct({name: '', brand: '', model: ''});
     history.push('/products-list');
   }
 
@@ -51,7 +55,7 @@ function Edit() {
         placeholder='Model'
         onChange={handleChange}
         />
-        <input
+        {/* <input
         value={editProduct.price }
         name='price'
         type="text"
@@ -64,7 +68,7 @@ function Edit() {
         type="text"
         placeholder='Color'
         onChange={handleChange}
-        />
+        /> */}
         <button onClick={handleEdit}>Edit</button>
       </form>
     </div>

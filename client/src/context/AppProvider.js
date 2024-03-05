@@ -17,8 +17,8 @@ function AppProvider ({ children }) {
         name: '',
         brand: '',
         model: '',
-        price: '',
-        color: '',
+        // price: '',
+        // color: '',
     });
 
     const [productsList, setProductsList] = useState([]);
