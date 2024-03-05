@@ -17,14 +17,17 @@ function Signup() {
 
     const handleClick = async () => {
         const {name, email, password} = userSignup;
-        const {token, message} = await signupPost(name, email, password);
-            if(token){
-            localStorage.setItem('token', token);
+        const data = await signupPost(name, email, password);
+        if (typeof data === 'string') {
+            alert(data);
+        }else{
+            localStorage.setItem('token', data.message);
             history.push(`/products-list`) 
-        } else {
-            alert(message);
         }
+    
     }
+
+
     return (
         <>
         <div className='signup-container'>
