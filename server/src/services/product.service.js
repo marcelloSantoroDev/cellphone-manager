@@ -16,7 +16,7 @@ const createProduct = async (name, brand, model, price, color) => {
     const lowerCaseBrand = brand.toLowerCase();
     const lowerCaseModel = model.toLowerCase();
     
-    const { type, message } = await existingProductCheck(lowerCaseName, lowerCaseModel, lowerCaseColor);
+    const {type, message } = await existingProductCheck(lowerCaseName, lowerCaseModel, lowerCaseColor);
 
     if (type === 'FREE_TO_ADD') {
         await details.create({
@@ -24,10 +24,12 @@ const createProduct = async (name, brand, model, price, color) => {
             color: lowerCaseColor,
             productId: message
         });
-        return { type: null, message: '' };
+        return { type: null, message: 'created' };
     }
 
-    if (type === 'ADD') {
+    if (type === 'DONT_ADD') return { type: 'INVALID_PRODUCT', message: 'Product already exists' };
+
+    if (type === null) {
         const product = await products.create({
             name: lowerCaseName,
             brand: lowerCaseBrand,
@@ -40,10 +42,8 @@ const createProduct = async (name, brand, model, price, color) => {
             productId: product.id
         });
 
-        return { type: null, message: '' };
+        return { type: null, message: 'created' };
     }
-
-    return { type: 'INVALID_PRODUCT', message: 'Product already exists' };
 
 }
 
