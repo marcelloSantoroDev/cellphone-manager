@@ -13,19 +13,19 @@
     "routes": [
         {
             "src": "/user/(.*)", 
-            "dest": "server/user/$1"
+            "dest": "server/$1"
         },
         {
             "src": "/login/(.*)", 
-            "dest": "server/login/$1"
+            "dest": "server/$1"
         },
         {
             "src": "/auth/(.*)", 
-            "dest": "server/auth/$1"
+            "dest": "server/$1"
         },
         {
             "src": "/products/(.*)", 
-            "dest": "server/products/$1"
+            "dest": "server/$1"
         },
         {
             "src": "/(.*)", 
