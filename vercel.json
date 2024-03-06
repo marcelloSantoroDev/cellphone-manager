@@ -12,11 +12,23 @@
     ],
     "routes": [
         {
-            "src": "/(.*)",
-            "dest": "server/$1"
+            "src": "/user/(.*)", 
+            "dest": "server/user/$1"
         },
         {
-            "src": "/(.*)",
+            "src": "/login/(.*)", 
+            "dest": "server/login/$1"
+        },
+        {
+            "src": "/auth/(.*)", 
+            "dest": "server/auth/$1"
+        },
+        {
+            "src": "/products/(.*)", 
+            "dest": "server/products/$1"
+        },
+        {
+            "src": "/(.*)", 
             "dest": "client/$1"
         }
     ]
