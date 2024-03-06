@@ -11,7 +11,7 @@ function Home() {
         </h1>
         <div className='link-container'>
         <Link className="link" to="/login">Login</Link>
-        <Link className="link" to="/signup">Signup</Link>
+        <Link className="link" to="/signup">Sign up</Link>
         </div>
     </div>
   )

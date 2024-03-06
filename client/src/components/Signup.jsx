@@ -15,7 +15,8 @@ function Signup() {
         setUserSignup({...userSignup, [name]: value})
     }
 
-    const handleClick = async () => {
+    const handleClick = async (e) => {
+        e.preventDefault();
         const {name, email, password} = userSignup;
         const data = await signupPost(name, email, password);
         if (typeof data === 'string') {
@@ -23,6 +24,7 @@ function Signup() {
             setUserSignup({name: '', email: '', password: ''});
         }else{
             localStorage.setItem('token', data.message);
+            setUserSignup({name: '', email: '', password: ''});
             history.push(`/products-list`) 
         }
     
@@ -32,7 +34,7 @@ function Signup() {
     return (
         <>
         <div className='signup-container'>
-            <div className='form-container' action="">
+            <form className='form-container' action="">
                 <input
                 name='name'
                 value={userSignup.name}
@@ -54,11 +56,11 @@ function Signup() {
                 value={userSignup.password}
                 onChange={handleChange}
                 className='password-input'
-                type="text"
+                type="password"
                 placeholder='Password'
                 />
-                <button onClick={handleClick}>Signup</button>
-            </div>
+                <button onClick={handleClick}>Sign up</button>
+            </form>
         </div>
         <Link className="link" to="/">Home</Link>
 

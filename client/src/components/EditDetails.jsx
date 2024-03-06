@@ -20,6 +20,7 @@ function EditDetails() {
         const data = await detailsPut(index, id, price, color)
         if(typeof data === 'string') {
             alert(data);
+            setEditDetails({price: '', color: ''});
         }else {
             alert(data.message)
             setEditDetails({price: '', color: ''});

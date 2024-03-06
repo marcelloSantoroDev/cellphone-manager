@@ -42,7 +42,6 @@ function AppProvider ({ children }) {
         const apiFetch = async () => {
             const response = await productsGet();
             setProductsList(response);
-            console.log(response);
         }
         apiFetch();
     },[])

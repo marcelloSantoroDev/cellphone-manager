@@ -18,15 +18,15 @@ function App() {
       <Route path="/login" component={Login} />
       <Route path="/signup" component={Signup} />
       <PrivateRoute path="/add-product" component={Add} />
-      <Redirect from="/add-product" to="/login" />
+      <Redirect from="/add-product" to="/" />
       <PrivateRoute path="/edit-product-:id" component={Edit} />
-      <Redirect from="/edit-product-:id" to="/login" />
+      <Redirect from="/edit-product-:id" to="/" />
       <PrivateRoute path="/products-list" component={List} />
-      <Redirect from="/products-list" to="/login" />
+      <Redirect from="/products-list" to="/" />
       <PrivateRoute path="/details-product-:id" component={Details} />
-      <Redirect from="/details-product-:id" to="/login" />
+      <Redirect from="/details-product-:id" to="/" />
       <PrivateRoute path="/edit-details-product-:id/:index" component={EditDetails} />
-      <Redirect from="/edit-details-product-:id" to="/login" />
+      <Redirect from="/edit-details-product-:id/:index" to="/" />
     </Switch>
   );
 }

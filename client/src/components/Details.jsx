@@ -7,7 +7,7 @@ import productsGet from '../utils/productsGet';
 import detailsDelete from '../utils/detailsDelete';
 
 function Details() {
-    const { productsList, setProductsList } = useContext(AppContext);
+    const { productsList, setProductsList, setAddProduct } = useContext(AppContext);
     const { id } = useParams();
     const urlId = id;
     const product = productsList.find(product => product.id === +id);
@@ -36,9 +36,10 @@ function Details() {
     const {id} = e.target;
     await detailsDelete(id, urlId);
     const allProducts = await updateApi();
-    const {data} = allProducts.find(product => product.id === +urlId);
+    const {name, brand, model, data} = allProducts.find(product => product.id === +urlId);
     if(data.length === 0) {
       alert("Please add some details to your product")
+      setAddProduct({name, brand, model});
       history.push('/add-product')
     }
   }
@@ -47,7 +48,7 @@ function Details() {
     <div>
       <Link to='/products-list' className='link' >Return</Link>
     <div className='main-info'>
-    <p><strong>{product.name} {product.model}</strong> </p>
+    <p><strong>{product.name}</strong> </p>
     </div>
     {product.data.map(({price, color}, index)=> (
       <div className='price-color-container' key={index}>

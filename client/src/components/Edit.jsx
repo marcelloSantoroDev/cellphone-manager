@@ -22,10 +22,12 @@ function Edit() {
     const data = await productsPut(id, name, brand, model);
     if(typeof data === 'string') {
       alert(data);
+      setEditProduct({name: '', brand: '', model: ''});
+    } else {
+      alert(data.message)
+      setEditProduct({name: '', brand: '', model: ''});
+      history.push('/products-list');
     }
-    alert(data.message)
-    setEditProduct({name: '', brand: '', model: ''});
-    history.push('/products-list');
   }
 
   return (

@@ -15,18 +15,13 @@ function Add() {
   const handleClick = async (e) => {
     e.preventDefault()
     const { name, brand, model, price, color } = addProduct;
-    try {
-          const data = await productPost(name, brand, model, price, color);
+    const data = await productPost(name, brand, model, price, color);
     if (typeof data === 'string') {
       alert(data);
     } else {
       alert(data.message)
       setAddProduct({name: '', brand: '', model: '', price: '', color: ''});
     }
-    } catch (error) {
-      console.log(error);
-    }
-
   }
 
   return (
