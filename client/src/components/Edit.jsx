@@ -55,20 +55,6 @@ function Edit() {
         placeholder='Model'
         onChange={handleChange}
         />
-        {/* <input
-        value={editProduct.price }
-        name='price'
-        type="text"
-        placeholder='Price'
-        onChange={handleChange}
-        />
-        <input
-        value={editProduct.color }
-        name='color'
-        type="text"
-        placeholder='Color'
-        onChange={handleChange}
-        /> */}
         <button onClick={handleEdit}>Edit</button>
       </form>
     </div>

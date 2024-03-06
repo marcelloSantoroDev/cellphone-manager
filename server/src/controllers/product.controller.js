@@ -38,4 +38,27 @@ const deleteProduct = async (req, res) => {
     res.status(200).json({ message });
 }
 
-module.exports = { createProduct, getAll, updateProduct, deleteProduct };
+const updateDetails = async (req, res) => {
+    const { id } = req.params;
+    const { index, price, color } = req.body;
+    // const parsedIndex = parseFloat(index);
+    const { type, message } = await productService.updateDetails(index, id, price, color);
+
+    if (type === 'INVALID_FIELDS') return res.status(400).json(message);
+    if (type === 'INVALID_PRICE') return res.status(400).json(message);
+    if (type === 'INVALID_COLOR') return res.status(400).json(message);
+
+    return res.status(200).json({ message });
+}
+
+const deleteDetails = async (req, res) => {
+    const { id } = req.params;
+    const { index } = req.body;
+    const { type, message } = await productService.deleteDetails(index, id);
+
+    if (type === 'INVALID_FIELDS') return res.status(400).json(message);
+
+    return res.status(200).json({ type: '', message });
+}
+
+module.exports = { createProduct, getAll, updateProduct, deleteProduct, updateDetails, deleteDetails };

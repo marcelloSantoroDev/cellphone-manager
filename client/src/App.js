@@ -8,6 +8,7 @@ import Edit from './components/Edit';
 import Home from './components/Home';
 import PrivateRoute from './utils/PrivateRoute';
 import Details from './components/Details';
+import EditDetails from './components/EditDetails';
 
 
 function App() {
@@ -23,7 +24,9 @@ function App() {
       <PrivateRoute path="/products-list" component={List} />
       <Redirect from="/products-list" to="/login" />
       <PrivateRoute path="/details-product-:id" component={Details} />
-      <Redirect from="/products-list" to="/login" />
+      <Redirect from="/details-product-:id" to="/login" />
+      <PrivateRoute path="/edit-details-product-:id/:index" component={EditDetails} />
+      <Redirect from="/edit-details-product-:id" to="/login" />
     </Switch>
   );
 }
