@@ -16,7 +16,6 @@ const existingProductCheck = async (name, model, color) => {
     if(product) {
         const productDetails = product.dataValues.data;
         const thereIsAProductWithNameModelAndColor = productDetails?.some(detail => detail.color === color);
-        console.log(thereIsAProductWithNameModelAndColor);
         if (!thereIsAProductWithNameModelAndColor) {
             return {type: "FREE_TO_ADD", message: product.dataValues.id}
         }

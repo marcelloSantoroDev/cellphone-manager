@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import './CSS/Signup.css';
 import AppContext from '../context/AppContext';
 import signupPost from '../utils/signupPost';
@@ -21,7 +21,6 @@ function Signup() {
         const data = await signupPost(name, email, password);
         if (typeof data === 'string') {
             alert(data);
-            setUserSignup({name: '', email: '', password: ''});
         }else{
             localStorage.setItem('token', data.message);
             setUserSignup({name: '', email: '', password: ''});
@@ -29,6 +28,10 @@ function Signup() {
         }
     
     }
+
+    useEffect(() => {
+        setUserSignup({name: '', email: '', password: ''});
+    },[setUserSignup])
 
 
     return (

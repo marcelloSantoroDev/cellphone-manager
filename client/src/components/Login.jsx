@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import './CSS/Login.css';
@@ -21,13 +22,16 @@ function Login() {
         const data = await loginPost(email, password);
         if (typeof data === 'string') {
             alert(data);
-            setUserLogin({email: '', password: ''});
           }else{
             localStorage.setItem('token', data.message);
             setUserLogin({email: '', password: ''});
             history.push(`/products-list`) 
         }
     }
+
+    useEffect(() => {
+        setUserLogin({email: '', password: ''});
+    },[setUserLogin])
 
 
   return (
