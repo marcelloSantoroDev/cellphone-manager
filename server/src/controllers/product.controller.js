@@ -4,12 +4,12 @@ const createProduct = async (req, res) => {
     const { name, brand, model, price, color } = req.body;
     const { type, message } = await productService.createProduct(name, brand, model, price, color);
 
-    if (type === 'INVALID_FIELDS') return res.status(400).json(message);
-    if (type === 'INVALID_PRICE') return res.status(400).json(message);
-    if (type === 'INVALID_COLOR') return res.status(400).json(message);
+    // if (type === 'INVALID_FIELDS') return res.status(400).json(message);
+    // if (type === 'INVALID_PRICE') return res.status(400).json(message);
+    // if (type === 'INVALID_COLOR') return res.status(400).json(message);
     if (type === 'INVALID_PRODUCT') return res.status(400).json(message);
 
-    res.status(201).json({ type: null, message: 'created' });
+    res.status(201).json({ type: null, message});
 }
 
 const getAll = async (_req, res) => {
