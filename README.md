@@ -2,10 +2,6 @@
 
 ## Server Side
 --------------------------------------------------------------------------------
-### Português
-
-## Server Side
---------------------------------------------------------------------------------
 ##### Português
 \
 Esta é uma aplicação para o servidor de uma aplicação que gerencia dados de celulares.
