@@ -127,16 +127,7 @@ As únicas rotas públicas da aplicação são `/`, `login` e `signup`. As demai
 
 Após a verificação, o usuário entra na parte privada do site, caindo direto em `/products-list`, onde será renderizada a lista de produtos que forem adicionados. Nesta rota, também há botões de log out e de adicionar um produto. Quando há produtos na lista, além dos seus dados renderizados, o usuário pode editar os dados principais, navegando até a rota `/edit-product-:id`, remover todos os dados, ou navegar até a rota`/details-product-:id`, para ver, remover ou editar os detalhes do produto (cor e preço). Se o usuário quiser editar os detalhes, será direcionado para a rota `/edit-details-product-:id/:index`.
 
-## Deploy
-
-Você pode encontrar a aplicação full stack deste repositório no link abaixo:
-
-[Cellphone Manager](https://cellphone-manager-client.vercel.app/)
-
---------------------------------------------------------------------------------
 ### English
-
-## Client Side
 
 This is a front-end application that uses `react.js` and `axios` to generate the interface for a Cellphone Manager.
 
